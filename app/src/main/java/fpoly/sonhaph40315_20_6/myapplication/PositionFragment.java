@@ -30,7 +30,7 @@ public class PositionFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View  view = inflater.inflate(R.layout.fragment_position,container,false);
+        View view = inflater.inflate(R.layout.fragment_position,container,false);
         cart_recyclerView = view.findViewById(R.id.recyclerView);
         txt_cart_tonggiatien = view.findViewById(R.id.txt_cart_tonggiatien);
         btn_cart_thanhtoan = view.findViewById(R.id.btn_cart_thanhtoan);
