@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".DanhGiaSanPhamActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".Setting.ThongTinDonHangActivity"
             android:exported="false" />
         <activity
@@ -39,7 +45,7 @@
             android:name=".Cart_activity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".LienHeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
