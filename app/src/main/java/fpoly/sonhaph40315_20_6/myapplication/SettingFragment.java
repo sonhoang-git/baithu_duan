@@ -27,31 +27,32 @@ public class SettingFragment extends Fragment {
     private LinearLayout settingContainer;
     private Toolbar toolbar;
 
+    private ImageView imgbtn_back;
+    private TextView txt_title;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_setting, container, false);
         toolbar = view.findViewById(R.id.toolbar_setting);
-        AppCompatActivity activity = (AppCompatActivity) requireActivity();
-        activity.setSupportActionBar(toolbar);
-        if (activity.getSupportActionBar() != null) {
-            activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            activity.getSupportActionBar().setTitle("Cài đặt");
-        }
-        toolbar.setNavigationOnClickListener(v -> activity.onBackPressed());
+        settingContainer = view.findViewById(R.id.settingContainer);
+        imgbtn_back = view.findViewById(R.id.btn_back);
+        txt_title = view.findViewById(R.id.tv_title);
+
+        // Gọi hàm ẩn bottom
+        ((MainActivity)getActivity()) .hideBottomNav();
         settingContainer = view.findViewById(R.id.settingContainer);
         addSettingItem(R.drawable.map, "Địa chỉ");
-        View divider = new View(getContext());
-        divider.setLayoutParams(new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                1)); // chiều cao 1dp
-        divider.setBackgroundColor(Color.parseColor("#333333"));
-        settingContainer.addView(divider);
+        addDivider();
         addSettingItem(R.drawable.map, "Thẻ ngân hàng");
+        addDivider();
         addSettingItem(R.drawable.map, "Thông tin");
+        addDivider();
         addSettingItem(R.drawable.map, "Hỗ trợ");
+        addDivider();
         addSettingItem(R.drawable.map, "Đăng xuất");
+        addDivider();
         return view;
     }
 
@@ -62,19 +63,33 @@ public class SettingFragment extends Fragment {
         item.setOnClickListener(v -> {
             Context context = requireContext();
             if (title.equals("Địa chỉ")) {
+
                 startActivity(new Intent(context, DiaChiActivity.class));
             } else if (title.equals("Thẻ ngân hàng")) {
+
                 startActivity(new Intent(context, TheNganHangActivity.class));
             } else if (title.equals("Thông tin")) {
+
                 startActivity(new Intent(context, ThongTinActivity.class));
             } else if (title.equals("Hỗ trợ")) {
+
                 startActivity(new Intent(context, HoTroActivity.class));
             } else if (title.equals("Đăng xuất")) {
+
                 Toast.makeText(context, "Đăng xuất thành công", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(context, MainActivity.class);
                 startActivity(intent);
             }
         });
         settingContainer.addView(item);
+    }
+
+    private void addDivider() {
+        View divider = new View(getContext());
+        divider.setLayoutParams(new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                1)); // chiều cao 1dp
+        divider.setBackgroundColor(Color.parseColor("#333333"));
+        settingContainer.addView(divider);
     }
 }

@@ -2,13 +2,13 @@ package fpoly.sonhaph40315_20_6.myapplication.model;
 
 import java.io.Serializable;
 
-public class ChoXacNhanModel implements Serializable {
+public class TrangThaiModel implements Serializable {
     private int avata;
     private String name;
     private int gia;
     private String trangthai;
 
-    public ChoXacNhanModel(int avata, String name, int gia, String trangthai) {
+    public TrangThaiModel(int avata, String name, int gia, String trangthai) {
         this.avata = avata;
         this.name = name;
         this.gia = gia;

@@ -1,6 +1,7 @@
 package fpoly.sonhaph40315_20_6.myapplication;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -53,5 +54,13 @@ public class MainActivity extends AppCompatActivity {
     }
     private void loadFragment(Fragment fragment){
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,fragment).commit();
+    }
+    // Hàm ẩn bottomNavigation
+    public void hideBottomNav(){
+        bottomNavigationView.setVisibility(View.GONE);
+    }
+
+    public void showBottomNav(){
+        bottomNavigationView.setVisibility(View.VISIBLE);
     }
 }

@@ -3,64 +3,42 @@ package fpoly.sonhaph40315_20_6.myapplication.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import fpoly.sonhaph40315_20_6.myapplication.R;
+import java.util.ArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link DangGiaoFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import fpoly.sonhaph40315_20_6.myapplication.R;
+import fpoly.sonhaph40315_20_6.myapplication.adapter.DaHuyDonHangAdapter;
+import fpoly.sonhaph40315_20_6.myapplication.adapter.DangGiaoDonHangAdapter;
+import fpoly.sonhaph40315_20_6.myapplication.model.TrangThaiModel;
+
+
 public class DangGiaoFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public DangGiaoFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment DangGiaoFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static DangGiaoFragment newInstance(String param1, String param2) {
-        DangGiaoFragment fragment = new DangGiaoFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    private RecyclerView recyclerView_danggiao;
+    private DangGiaoDonHangAdapter dangGiaoDonHangAdapter;
+    private ArrayList<TrangThaiModel> trangThaiModelArrayList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dang_giao, container, false);
+        View view =  inflater.inflate(R.layout.fragment_dang_giao, container, false);
+        recyclerView_danggiao = view.findViewById(R.id.recyclerView_danggiao);
+        trangThaiModelArrayList = new ArrayList<>();
+        trangThaiModelArrayList.add(new TrangThaiModel( R.drawable.user_avata_icon,  "Áo trẻ em", 100, "Đang giao"));
+        trangThaiModelArrayList.add(new TrangThaiModel( R.drawable.user_avata_icon,  "Áo trẻ em", 100, "Đang giao"));
+        trangThaiModelArrayList.add(new TrangThaiModel( R.drawable.user_avata_icon,  "Áo trẻ em", 100, "Đang giao"));
+
+        dangGiaoDonHangAdapter = new DangGiaoDonHangAdapter(getContext(),trangThaiModelArrayList);
+        recyclerView_danggiao.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView_danggiao.setAdapter(dangGiaoDonHangAdapter);
+
+        return  view;
     }
 }
